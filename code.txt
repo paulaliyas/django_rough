@@ -1,0 +1,58 @@
+
+settings
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+
+url
+
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+html
+
+
+  {% load static %}
+    {% block content %}
+    {% static "view/" as baseUrl %}
+
+
+{%endblock%}
+
+ <link href="{% static 'reg/css/main.css'%}" rel="stylesheet" media="all">
+
+
+
+image
+
+<form method="POST" action="reg_page" id="f1" enctype="multipart/form-data">
+
+<input type="file" class="form-control" name="picture">
+
+
+view
+
+
+ uploaded_file = request.FILES['picture']
+        print(uploaded_file.name)
+        fs = FileSystemStorage()
+        fs.save(uploaded_file.name,uploaded_file)
+        images = '/media/'
+        imageup = images+str(uploaded_file)
+
+
+
+import
+
+
+from django.core.files.storage import FileSystemStorage
+
+
+media folder
