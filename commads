@@ -50,6 +50,10 @@ urls.py in myproject
           - from . import views
           - path('',views.home,name='home')
           
+.html
+*****
+<form method="post" action="reg_page" id="f1" enctype="multipart/form-data">
+
 
 views.py
 ********
@@ -85,9 +89,9 @@ def reg(request):
  image upload view
  *****************
  
- def view(request, template_name=
-      data=tbl_login.objects.all()
-      return render(request, template_name,{'products':data})
+def view_page(request, template_name='./myapp/vw.html'):
+    data = tbl_reg.objects.all()
+    return render(request, template_name,{'prod':data})
 
 
 {% for i in products %}
