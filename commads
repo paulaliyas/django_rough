@@ -39,7 +39,7 @@ python3 manage.py migrate
 make changes on the code
 ************************
 
-settings.py - myapp (insert the app name on the )
+settings.py - myapp (insert the app name on the installed app fun)
 
 urls.py  - from django.urls import include,path
          - path(",include('myapp.urls'))
