@@ -1,0 +1,99 @@
+python3
+pip3
+
+code to start running
+*********************
+
+pip3 freeze - to check virtual enviornment is installed.
+
+pip3 install virtualenv
+sudo apt install virtualenv - both are used for installing virtual env
+
+virtualenv -p python3 myenv - to create an virtual enviornment and name as myenv *(can be any name)
+
+source myenv/bin/activate - to activate virtual enviorment
+
+pip3 install django - install django in virtual env, every new envoirnment is activated django should be installed.
+
+django-admin startproject myproject - to start project and named as myproject *(can be any name)
+
+cd myproject- move to project folder.
+
+python3 manage.py migrate - to check connecton of backend 
+
+python3 manage.py createsuperuser - to create a super user 
+
+python3 manage.py startapp myapp - to create app and named as myapp *(can be any name)
+
+python3 manage.py runserver - to start the project and check it on the browser
+
+to make connection with backend - sql lite browser
+
+python3 manage.py makemigrations myapp
+
+python3 manage.py migrate 
+
+----------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------
+
+make changes on the code
+************************
+
+settings.py - myapp (insert the app name on the )
+
+urls.py  - from django.urls import include,path
+         - path(",include('myapp.urls'))
+          
+copy urls.py to myproject 
+
+urls.py in myproject
+          - from . import views
+          - path('',views.home,name='home')
+          
+
+views.py
+********
+
+def home(request):
+    return render(request, './myapp/hello.html')
+
+
+models.py
+*********
+
+class tbl_login(models.Model):
+    uname=models.CharField(max_length=30)
+    
+    
+views.py
+********
+
+def reg(request):
+    if request.method == "POST":
+        uname=request.POST.get("uname")
+        obj=tbl_login(uname=uname)
+        obj.save()
+        return render(request, './myapp/hello.html')
+    else:
+        return render(request, './myapp/home.html')
+ 
+ in import statement
+ 
+ from .models import tbl_login,tbl_etc..
+ 
+ 
+ image upload view
+ *****************
+ 
+ def view(request, template_name=
+      data=tbl_login.objects.all()
+      return render(request, template_name,{'products':data})
+
+
+{% for i in products %}
+
+<td>{{i.uname}}</td>
+<td>{{i.phno}}</td>
+<td><img src={{i.img}} width="200px" height="200px" alt=""></td>
+
+{% endfor%}
