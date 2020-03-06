@@ -57,6 +57,8 @@ urls.py in myproject
 
 views.py
 ********
+myapp/templates/myapp/hello.html
+
 
 def home(request):
     return render(request, './myapp/hello.html')
